@@ -1,0 +1,34 @@
+{% extends 'swiftseqweb/base.html' %}
+{% block content %}
+<section class="swiftseq-section">
+    <div class="container">
+        <div class="row swiftseq-text-centered">
+            <h1>Mom didn't have time to pack a workflow for you today</h1>
+            <h3>So we built these for you</h3>
+        </div>
+    </div>
+</section>
+{% for prebuilt in prebuilts %}
+<section class="swiftseq-section-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-primary swiftseq-no-rounded">
+                    <div class="panel-heading swiftseq-no-rounded">
+                        <div class="panel-title">{{ prebuilt.title }}</div>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ prebuilt.description }}</p>
+                        <p>
+                            <a target="_blank" href="/media/{{ prebuilt.workflow_file }}">
+                                <button type="button" class="btn btn-primary">Download</button>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+{% endblock content %}

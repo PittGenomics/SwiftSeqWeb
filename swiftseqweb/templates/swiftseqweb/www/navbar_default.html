@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<nav class="container-fluid swiftseq-navbar">
+    <div class="navbar-header">
+        <span class="navbar-brand">
+            <a href="/" class="swiftseq-nav-logo">
+                <img src="{% static 'images/logo.png' %}" style="margin-top:-30px;max-height:75px"/>
+            </a>
+        </span>
+    </div>
+    <div class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav">
+            <li><a href="/generate-workflow/">Generate Workflow</a></li>
+            <li><a href="/prebuilt-workflows/">Prebuilt Workflows</a></li>
+            <li><a href="#">Docker/AWS</a></li>
+{#            <li><a href="/download">Download</a></li>#}
+            <li><a href="http://swiftseq.readthedocs.io/">Documentation</a></li>
+        </ul>
+    </div>
+</nav>

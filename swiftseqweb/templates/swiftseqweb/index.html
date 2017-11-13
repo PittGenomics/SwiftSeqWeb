@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SwiftSeq</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link href="{% static 'css/bootstrap.flatly.custom.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/swiftseqgui2.css' %}" rel="stylesheet" />
+</head>
+<body>
+<div class="container-fluid swiftseq-navbar">
+    <div class="navbar-header">
+        <span class="navbar-brand">SwiftSeq &lt;logo here&gt;</span>
+    </div>
+    <div class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav">
+            <li><a href="#">Generate Workflow</a></li>
+            <li><a href="#">Prebuilt Workflows</a></li>
+            <li><a href="#">Download</a></li>
+            <li><a href="#">Wiki</a></li>
+        </ul>
+    </div>
+</div>
+<section class="swiftseq-section">
+    <div class="container">
+        <div class="row swiftseq-text-centered">
+            <h1>Efficiently Parallel and Robust? Yes please.</h1>
+            <h3>SwiftSeq is designed to run anywhere, with maximum efficiency.</h3>
+            <br/>
+            <img src="{% static 'images/placeholder.png' %}" style="margin-top:15px"/>
+            <button type="button" class="btn btn-primary">Learn More</button>
+            <button type="button" class="btn btn-success">Download SwiftSeq</button>
+
+        </div>
+    </div>
+</section>
+<section class="swiftseq-alt-background swiftseq-section">
+    <div class="container">
+        <div class="row swiftseq-text-centered">
+            <h1>Features you didn't know were possible.</h1>
+            <h3>All rolled into one run-anywhere package.</h3>
+        </div>
+        <div class="swiftseq-section row">
+            <div class="col-sm-6">
+                <h2>Short on time?</h2>
+                <p>SwiftSeq has been shown to reduce compute time by 4000x. It will also do your laundry and
+                cook you dinner, so you have maximal time to dedicate to science.</p>
+            </div>
+            <div class="col-sm-6">
+                <h2>End-to-End DNA Sequencing</h2>
+                <p>Swiftseq processes exome and genome data quickly and efficiently. Built on the parallele scripting
+                language Taylor, it robustly executes, monitors, and paralellizes computational tasks.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Modular from birth</h2>
+                <p>Algorithms and their parameters can be defined using a simple JSON configuration file, sharable with
+                collegues to promote easy and reliable duplication of pipelines.</p>
+            </div>
+            <div class="col-sm-6">
+                <h2>Give it all you got</h2>
+                <p>Runs anywhere from one to thousands of samples.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="swiftseq-section">
+    <div class="container">
+        <div class="row swiftseq-text-centered">
+            <h1>Not quite done? Another header would go here.</h1>
+            <h3>And this would be the witty subtext.</h3>
+        </div>
+        <div class="swiftseq-section row">
+            <div class="col-sm-8">
+                <img src="{% static 'images/swiftseq_diagram.png' %}" style="width:100%"/>
+            </div>
+            <div class="col-sm-4">
+                <h2>This image is a good image.</h2>
+                <p>It probably deserves some text and some other stuff to go with it.</p>
+                <p>Multiple paragraphs would be nice, just to even out how long the image is. You could throw up some
+                more jargon about end-to-end DNA sequencing or how it make efficient use of memory, whatever
+                helps take up some space.</p>
+                <p>Or just let the blank space exist.</p>
+                <p>A link to the paper might not be a bad idea.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="swiftseq-section swiftseq-alt-background">
+    <div class="container">
+        <div class="row swiftseq-text-centered">
+            <h1>Remember when designing workflows<br/>meant using the command line?</h1>
+            <h3>Yeah, we try not to either.</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Use our web app to make things easier</h2>
+                <p>Designed for flexibility and modularity, our web app allows you to customize your workflow
+                in an intuitive way while maintaining the customizability that you need. The output is a simple
+                JSON file that is small in size and easy to share. Simply feed this configuration into SwiftSeq
+                and let the science happen.</p>
+                <br/>
+                <button type="button" class="btn btn-success">Generate Workflow</button>
+            </div>
+            <div class="col-sm-6">
+                <img src="{% static 'images/generate_screenshot.png' %}" style="width:100%" />
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="swiftseq-footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-sm-offset-2">
+                <h1>Things we do</h1>
+                <ul>
+                    <li>DNAseq</li>
+                    <li>RNAseq</li>
+                    <li>ChIPseq</li>
+                    <li>DNase-seq</li>
+                    <li>ATACseq</li>
+                    <li>Other-seq</li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h1>Contact us</h1>
+                <ul>
+                    <li>Knapp Center for Biomedical Discovery</li>
+                    <li>900 E. 57th St</li>
+                    <li>Chicago, IL 60637</li>
+                    <li>Tel: (555)-555-1234</li>
+                </ul>
+
+            </div>
+            <div class="col-sm-3">
+                <h1>Cool people and places</h1>
+                <ul>
+                    <li>Univeristy of Chicago</li>
+                    <li>Institute for Genomics and Systems Biology</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row swiftseq-section">
+            <div class="col-sm-4 col-sm-offset-2">
+                &copy;2015 Jason Pitt, PhD Student<br/>
+                Designed and developed by Dominic Fitzgerald
+            </div>
+            <div class="col-sm-4 ">
+                <img src="{% static 'images/uofc_logo.png' %}" style="max-height:50px" />
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

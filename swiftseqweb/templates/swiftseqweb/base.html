@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SwiftSeq | End-to-end DNA Sequencing</title>
+    <!-- Google web fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap CSS framework, flatly customization, further customized for swiftseq -->
+    <link href="{% static 'css/bootstrap.flatly.custom.css' %}" rel="stylesheet" />
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Select2 CSS -->
+    <link href="{% static 'css/select2.custom.css' %}" rel="stylesheet" />
+    <!-- Site layout CSS -->
+    <link href="{% static 'css/swiftseqweb.css' %}" rel="stylesheet" />
+    <!-- JQuery javascript library -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="{% static 'lib/jquery-ui.min.js' %}"></script>
+    <!-- Select2 JQuery Plugin -->
+    <script src="{% static 'lib/select2.min.js' %}"></script>
+
+    <script src="{% static 'lib/ProgramSet/programSet.js' %}"></script>
+
+    {% block extra_js %}
+    {% endblock %}
+</head>
+<body>
+
+{% block navbar %}
+    {% include 'swiftseqweb/www/navbar_default.html' %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block footer %}
+    {% include 'swiftseqweb/www/footer_default.html' %}
+{% endblock %}
+
+</body>
+</html>

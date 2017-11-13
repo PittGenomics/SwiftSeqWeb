@@ -1,0 +1,110 @@
+{% extends 'swiftseqweb/base.html' %}
+{% load staticfiles %}
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'js/generate_workflow/generate.js' %}"></script>
+{% endblock extra_js %}
+{% block content %}
+{% if nodata %}
+<section class="swiftseq-section">
+<div class="container">
+    <div class="row swiftseq-text-centered">
+        <h1><span class="fa fa-warning"></span>&nbsp;No Data Received</h1>
+        <h3>Uh-oh. Looks like something got disconnected.</h3>
+    </div>
+    <div class="row">
+        <p>This most likely occured because you came directly to this page without going through step 1 to generate
+        a workflow. Try starting from the beginning by clicking Generate Workflow in the top right.</p>
+    </div>
+</div>
+</section>
+{% else %}
+<section class="swiftseq-section">
+<div class="container">
+    <div class="row swiftseq-text-centered">
+        <h1>Generate Workflow</h1>
+        <h3>Develop your workflow, then drop in place. Done.</h3>
+    </div>
+</div>
+<!-- Questions and Answers box -->
+</section>
+<section class="swiftseq-section">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-primary swiftseq-no-rounded">
+                <div class="panel-heading swiftseq-no-rounded">
+                    <div class="panel-title">Questions and Answers</div>
+                </div>
+                <ul class="list-group">
+                    {% for question_set in question_sets %}
+                    <li class="list-group-item">
+                        <span class="text-primary">{{ question_set.question.name }}</span>
+                        <span class="text-info">{{ question_set.answer.name }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- Main application -->
+<section class="swiftseq-section-bottom">
+<form method="post" action="/generate-workflow/process-workflow/">
+<div class="container">
+    <div class="row">
+        <!-- Column for Steps -->
+        <div id="sticker" class="col-md-4">
+            <h3 style="margin-top:0">Available Options:</h3>
+            <ul class="list-group">
+                {% for step in steps %}
+                <label class="swiftseq-label-box swiftseq-no-select swiftseq-display-block">
+                    <li class="list-group-item swiftseq-no-rounded"> <!-- This isn't being un-rounded TODO -->
+                        <input type="checkbox" checked="checked" {% if step.required %}disabled="disabled" {% endif %}
+                               data-stepid="{{ step.id }}" name="option-checkbox-{{ step.id }}"
+                               class="option-checkbox"/>{{ step.name }}
+                    </li>
+                </label>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- Column for Programs and Parameters -->
+        <div id="rightCol" class="col-md-8">
+            {% for step in steps %}
+            <div class="panel panel-primary swiftseq-no-rounded panel-program" data-stepid="{{ step.id }}">
+                <div class="panel-heading swiftseq-no-rounded">
+                    <div class="panel-title">{{ step.name }}
+                        {% if step.multiple_programs %}
+                        <span class="add-program" style="cursor:pointer;float:right" data-stepid="{{ step.id }}">
+                            Add Program&nbsp;&nbsp;
+                            <span class="fa fa-plus-square" style="font-size: 120%"></span>
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="panel-body programset"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:20px">
+        <div class="col-xs-4 col-xs-offset-8">
+            <h4>Filename for download:</h4>
+            <input type="text" class="form-control" name="download-filename" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button type="button" class="btn btn-primary" style="float:right" id="submitbutton">
+                <span class="fa fa-download"></span>&nbsp;&nbsp;Download Workflow
+            </button>
+        </div>
+    </div>
+</div>
+{% for question_set in question_sets %}
+<input type="hidden" name="question-{{ question_set.question.id }}" value="{{ question_set.answer.id }}" />
+{% endfor %}
+</form>
+</section>
+{% endif %}
+{% endblock content %}

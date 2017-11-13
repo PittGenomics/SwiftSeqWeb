@@ -1,0 +1,50 @@
+{% extends 'swiftseqweb/base.html' %}
+{% load staticfiles %}
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'js/generate_workflow/questions.js' %}"></script>
+{% endblock extra_js %}
+{% block content %}
+<section class="swiftseq-section">
+<div class="container">
+    <div class="row swiftseq-text-centered">
+        <h1>Generate Workflow</h1>
+        <h3>Let's answer a couple questions first:</h3>
+    </div>
+</div>
+</section>
+<section class="swiftseq-section">
+<div class="container">
+    <form method="post" action="/generate-workflow/generate/">
+        {% csrf_token %}
+        <div class="row">
+            {% for question_set in question_sets %}
+            <div class="col-xs-12">
+                <div class="panel panel-primary swiftseq-no-rounded" data-order="{{ question_set.data.order }}" style="display:none">
+                    <div class="panel-heading swiftseq-no-rounded">
+                        <div class="panel-title">{{ question_set.question.name }}</div></div>
+                    <div class="panel-body">
+                        <ul style="margin-bottom:0;padding-left:0">
+                        {% for answer in question_set.answers %}
+                            <label class="swiftseq-label-box swiftseq-no-select" data-order="{{ question_set.data.order }}">
+                                <li class="list-group-item">
+                                    <input type="radio" name="question_id_{{ question_set.question.id }}" value="{{ answer.id }}"/>{{ answer.name }}
+                                </li>
+                            </label>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-primary" style="float:right" disabled="disabled" data-enabled="{{ num_questions }}" id="next_button">
+                    Next&nbsp;&nbsp;<span class="fa fa-arrow-circle-right"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</section>
+{% endblock content %}

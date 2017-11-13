@@ -1,0 +1,120 @@
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.swiftseq-navbar{
+    padding: 20px 45px 20px 45px;
+    border-top: 12px solid rgba(0, 52, 89, 1);
+    border-bottom: 2px solid rgba(231, 236, 239, 1);
+}
+
+.swiftseq-section{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.swiftseq-section-top{
+    padding-top: 50px;
+}
+.swiftseq-section-bottom{
+    padding-bottom: 50px;
+}
+.swiftseq-text-centered{
+    text-align: center;
+}
+.swiftseq-text-left{
+    text-align: left;
+}
+
+.swiftseq-nav-logo:hover{
+    text-decoration: none;
+}
+
+.swiftseq-alt-background{
+    background-color: rgba(0, 52, 89, 1);
+    color: rgba(231, 236, 239, 1);
+}
+
+.swiftseq-alt-background-2{
+    background-color: rgba(231, 236, 239, 1);
+}
+
+.swiftseq-footer{
+    background-color: rgba(28, 39, 48, 1);
+    color: rgba(231, 236, 239, 1);
+}
+.swiftseq-footer h1{
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.swiftseq-footer ul{
+    list-style-type: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+.swiftseq-label-box{
+    cursor: pointer;
+}
+.swiftseq-no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.swiftseq-display-block{
+    display: block;
+}
+
+/* Temporary */
+.swiftseq-no-rounded{
+    border-radius: 0;
+}
+
+/* Stickem rules */
+/*.stickem-container {*/
+  /*position: relative;*/
+/*}*/
+
+/*.stickem {*/
+    /*position: fixed;*/
+    /*top: 0;*/
+/*}*/
+
+/*.stickem-end {*/
+    /*bottom: 40px;*/
+    /*position: absolute;*/
+    /*right: 0;*/
+/*}*/
+
+.stick{
+    position: fixed;
+    top: 50px;
+}
+
+/* GitHub ribbon from http://tholman.com/github-corners/ */
+.github-corner:hover .octo-arm{
+    animation:octocat-wave 560ms ease-in-out
+}
+@keyframes octocat-wave{
+    0%,100%{
+        transform:rotate(0)
+    }
+    20%,60%{
+        transform:rotate(-25deg)
+    }
+    40%,80%{
+        transform:rotate(10deg)
+    }
+}
+@media (max-width:500px){
+    .github-corner:hover .octo-arm{
+        animation:none
+    }
+    .github-corner .octo-arm{
+        animation:octocat-wave 560ms ease-in-out
+    }
+}
