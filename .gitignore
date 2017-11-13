@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Django specific
+media/
+migrations/
+*.sqlite3
+.idea/
