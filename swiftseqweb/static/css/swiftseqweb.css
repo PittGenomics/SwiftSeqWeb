@@ -118,3 +118,65 @@ h1,h2,h3,h4,h5,h6{
         animation:octocat-wave 560ms ease-in-out
     }
 }
+
+.wow { visibility: hidden; }
+@keyframes fadeInDownMed {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fadeInDownMed {
+    animation-name: fadeInDownMed;
+}
+@keyframes fadeInUpSmall {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeInLeftSmall {
+  from {
+    opacity: 0;
+    transform: translate3d(-5%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fadeInRightSmall {
+  from {
+    opacity: 0;
+    transform: translate3d(5%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUpSmall {
+    animation-name: fadeInUpSmall;
+}
+.fadeInLeftSmall {
+    animation-name: fadeInLeftSmall;
+}
+.fadeInRightSmall {
+    animation-name: fadeInRightSmall;
+}
+.small-delay {
+    animation-delay: 0.2s;
+}

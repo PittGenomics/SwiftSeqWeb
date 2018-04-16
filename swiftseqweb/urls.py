@@ -9,6 +9,7 @@ urlpatterns = [
     # Front-end URL Patterns
     url(r'^$', TemplateView.as_view(template_name='swiftseqweb/www/home.html'), name='index'),
     url(r'^prebuilt-workflows/$', WWW.PrebuiltWorkflows.as_view(), name='prebuilt-workflows'),
+    url(r'^learn-more/$', WWW.LearnMore.as_view(), name='learn-more'),
 
     # Generate Workflow URL Patterns
     url(r'^generate-workflow/$', GenerateWorkflow.Index.as_view(), name='generate-workflow-index'),

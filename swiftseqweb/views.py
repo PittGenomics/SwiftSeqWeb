@@ -17,6 +17,10 @@ class WWW(object):
             }
             return render(request, 'swiftseqweb/prebuilt_workflows/prebuilt_workflows.html', context)
 
+    class LearnMore(View):
+        def get(self, request):
+            return render(request, 'swiftseqweb/www/learn_more.html')
+
 
 class GenerateWorkflow(object):
     class Index(View):
