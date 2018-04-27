@@ -45,6 +45,7 @@ class Program(models.Model):
     step = models.ForeignKey(Step)
     walltime = models.CharField(max_length=64, verbose_name='Walltime')
     help_url = models.CharField(max_length=512, verbose_name='Help URL')
+    notes = models.TextField(verbose_name='Program Notes', blank=True, null=True)
 
     def __unicode__(self):
         return self.name + ' | Program for Step: ' + self.step.name

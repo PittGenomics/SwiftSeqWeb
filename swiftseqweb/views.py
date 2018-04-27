@@ -157,7 +157,8 @@ class Ajax(object):
             program = Program.objects.get(pk=program_id)
             data = {
                 'help_url': program.help_url,
-                'walltime': program.walltime
+                'walltime': program.walltime,
+                'notes': program.notes
             }
             return HttpResponse(json.dumps(data))
 

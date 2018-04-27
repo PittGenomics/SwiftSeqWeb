@@ -45,6 +45,10 @@ $.widget('swiftseq.ProgramSet', {
                 $.getJSON('/generate-workflow/generate/get-program-attrs/' + widget.currentProgramId + '/', function(data){
                     widget.$widgetContainer.find('a.help-url').attr('href', data.help_url);
                     widget.$widgetContainer.find('input.walltime').val(data.walltime);
+                    if (data.notes == null) {
+                        data.notes = '';
+                    }
+                    widget.$widgetContainer.find('span.notes').text(data.notes);
                 });
 
             }).trigger('change');
