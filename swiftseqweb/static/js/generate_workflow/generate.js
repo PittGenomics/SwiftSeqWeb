@@ -22,16 +22,6 @@ $(document).ready(function(){
         $('<div>').addClass('panel-body programset').appendTo($panelProgram).ProgramSet({stepId: parseInt(stepId)});
     });
 
-    $('#submitbutton').click(function(){
-        $('input').removeAttr('disabled');
-        $('<iframe>').attr({
-            src: '/generate-workflow/process-workflow/?' + $('form').serialize(),
-            style: 'display:none'
-        }).appendTo($('body')).ready(function(){
-            window.location.replace('/generate-workflow/download-complete/');
-        });
-    });
-
     /* Make available options box sticky */
     var sticker = $('#sticker');
     var stickerWidth = sticker.outerWidth(true);

@@ -51,6 +51,7 @@
 <!-- Main application -->
 <section class="swiftseq-section-bottom">
 <form method="post" action="/generate-workflow/process-workflow/">
+{% csrf_token %}
 <div class="container">
     <div class="row">
         <!-- Column for Steps -->
@@ -95,7 +96,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <button type="button" class="btn btn-primary" style="float:right" id="submitbutton">
+            <button type="submit" class="btn btn-primary" style="float:right" id="submitbutton">
                 <span class="fa fa-download"></span>&nbsp;&nbsp;Download Workflow
             </button>
         </div>

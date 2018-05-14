@@ -1,10 +1,13 @@
+import os
 import json
 import time
+import uuid
 
 from django.views import View
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
+from django.conf import settings
 
 from swiftseqweb.models import PrebuiltWorkflow, Question, Answer, Step, Program, Parameter
 
@@ -80,9 +83,9 @@ class GenerateWorkflow(object):
             return render(request, 'swiftseqweb/generate_workflow/generate.html', context)
 
     class Process(View):
-        def get(self, request):
+        def post(self, request):
             output_data = dict()
-            post = request.GET
+            post = request.POST
 
             # Add questions data to output data
             input_questions = [key for key in post if key.startswith('question-')]
@@ -130,7 +133,7 @@ class GenerateWorkflow(object):
 
                 # Get program parameters, add to output data
                 program_parameter_keys = [key for key in post if key.startswith(program_set_name + '__parameter-')]
-                num_parameters = len(program_parameter_keys) / 2
+                num_parameters = int(len(program_parameter_keys) / 2)
                 output_data[step_name][program_name]['params'] = dict()
                 for i in range(num_parameters):
                     param_pk = post[program_set_name + '__parameter-{}__key'.format(i)]
@@ -140,15 +143,36 @@ class GenerateWorkflow(object):
                     param_val = post[program_set_name + '__parameter-{}__value'.format(i)]
                     output_data[step_name][program_name]['params'][param_name] = param_val
 
-            filename = post['download-filename']
-            if filename == '':
+            # Get user-provided filename
+            filename = post['download-filename'].strip()
+            if not filename:
                 filename = 'SwiftSeq_workflow_config_{}'.format(time.strftime('%d%b%Y'))
-            elif filename[-5:] == '.json':
-                filename = filename[:-5]
-            file_content = json.dumps(output_data, indent=4)
-            download_response = HttpResponse(file_content, content_type='application/json')
-            download_response['Content-Disposition'] = 'attachment; filename={}.json'.format(filename)
-            return download_response
+            elif filename.endswith('.json'):
+                filename.replace('.json', '')
+            file_content = json.dumps(output_data, indent=2)
+
+            # Write out JSON file contents for linked download
+            json_out_filepath = os.path.join(settings.MEDIA_ROOT, filename + '.json')
+            download_rel_url = os.path.join(settings.MEDIA_URL, filename + '.json')
+            if not os.path.isdir(settings.MEDIA_ROOT):
+                os.mkdir(settings.MEDIA_ROOT)
+            if os.path.isfile(json_out_filepath):
+                append_uuid = str(uuid.uuid4())[:8]
+                json_out_filepath = os.path.join(
+                    settings.MEDIA_ROOT,
+                    filename + '_{}.json'.format(append_uuid)
+                )
+                download_rel_url = os.path.join(
+                    settings.MEDIA_URL,
+                    filename + '_{}.json'.format(append_uuid)
+                )
+            with open(json_out_filepath, 'w') as json_out:
+                json_out.write(file_content + '\n')
+
+            return render(request, 'swiftseqweb/generate_workflow/download_complete.html', {
+                'relative_download_link': download_rel_url,
+                'full_download_link': os.path.join(settings.FQDN, download_rel_url.strip('/'))
+            })
 
 
 class Ajax(object):
