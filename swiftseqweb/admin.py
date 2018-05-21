@@ -12,8 +12,14 @@ class AnswerInline(admin.TabularInline):
     extra = 1
 
 
+class StepRuleInline(admin.StackedInline):
+    model = StepRule
+    extra = 1
+
+
 class StepAdmin(admin.ModelAdmin):
     list_display = ('name', 'required', 'multiple_programs')
+    inlines = [StepRuleInline]
 
 
 class ProgramAdmin(admin.ModelAdmin):

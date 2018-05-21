@@ -58,27 +58,23 @@ class GenerateWorkflow(object):
 
         def post(self, request):
             context = {'nodata': False}
+            post_questions = {post: request.POST[post] for post in request.POST if 'question_id' in post}
 
-            post_questions = dict()
-            for post in request.POST:
-                if 'question_id' in post:
-                    post_questions[post] = request.POST[post]
+            # Get question-answers in context
+            context['question_sets'] = [
+                {
+                    'question': Question.objects.get(pk=question.split('_')[-1]),
+                    'answer': Answer.objects.get(pk=answer_id)
+                }
+                for question, answer_id in post_questions.items()
+            ]
 
-            context['question_sets'] = list()
-            allowed_answers_ids = list()
-            for question in post_questions:
-                question_id = question.split('_')[2]
-                answer_id = post_questions[question]
-                db_question = Question.objects.get(pk=question_id)
-                db_answer = Answer.objects.get(pk=answer_id)
-                context['question_sets'].append({
-                    'question': db_question,
-                    'answer': db_answer
-                })
-                allowed_answers_ids.append(answer_id)
-
-            steps = Step.objects.filter(allowed_answers__in=allowed_answers_ids)
-            context['steps'] = steps
+            # Calculate which steps should be displayed
+            answers_ids = set([int(v) for v in post_questions.values()])
+            context['steps'] = [
+                step for step in Step.objects.all()
+                if any([rule.issubset(answers_ids) for rule in step.get_rules()])
+            ]
 
             return render(request, 'swiftseqweb/generate_workflow/generate.html', context)
 

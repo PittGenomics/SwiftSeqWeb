@@ -26,7 +26,6 @@ class Answer(models.Model):
 
 class Step(models.Model):
     name = models.CharField(max_length=128, verbose_name='Step Name')
-    allowed_answers = models.ManyToManyField(Answer)
     required = models.BooleanField(default=False)
     multiple_programs = models.BooleanField(default=False)
 
@@ -38,6 +37,14 @@ class Step(models.Model):
 
     def get_programmatic_name(self):
         return self.name.replace(' ', '_')
+
+    def get_rules(self):
+        return [{r.pk for r in sr.rule.all()} for sr in self.steprule_set.all()]
+
+
+class StepRule(models.Model):
+    step = models.ForeignKey('Step')
+    rule = models.ManyToManyField(Answer)
 
 
 class Program(models.Model):
