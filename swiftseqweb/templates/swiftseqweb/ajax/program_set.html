@@ -8,7 +8,7 @@
     </h4>
     <select class="form-control select-programs" name="programSet-{{ program_set_id }}__program">
         {% for program in step.program_set.all %}
-        <option value="{{ program.id }}">{{ program.name }}</option>
+        <option value="{{ program.id }}">{{ program.display_name }}</option>
         {% endfor %}
     </select>
     <span class="notes" style="margin-top:12px;display:block"></span>

@@ -39,19 +39,31 @@ class Step(models.Model):
         return self.name.replace(' ', '_')
 
     def get_rules(self):
-        return [{r.pk for r in sr.rule.all()} for sr in self.steprule_set.all()]
+        _steprules = self.steprule_set.all()
+        if not _steprules:
+            return [set()]
+        return [{r.pk for r in sr.rule.all()} for sr in _steprules]
 
 
 class StepRule(models.Model):
+    """
+    StepRules are sets of ANDs, where all selected Answers must be present for the
+    set to be considered True.
+
+    A Step can have multiple StepRules, which are all ORed together. That is, if any
+    one of the StepRules associated with a Step are True, the Step is presented for
+    selection at the next step.
+    """
     step = models.ForeignKey('Step')
     rule = models.ManyToManyField(Answer)
 
 
 class Program(models.Model):
-    name = models.CharField(max_length=128, verbose_name='Program Name')
-    step = models.ForeignKey(Step)
+    name = models.CharField(max_length=128, verbose_name='Program Executable Name')
+    display_name = models.CharField(max_length=128, verbose_name='Program Display Name')
+    step = models.ForeignKey('Step')
     walltime = models.CharField(max_length=64, verbose_name='Walltime')
-    help_url = models.CharField(max_length=512, verbose_name='Help URL')
+    help_url = models.CharField(max_length=512, verbose_name='Help URL', default='#', blank=True)
     notes = models.TextField(verbose_name='Program Notes', blank=True, null=True)
 
     def __unicode__(self):
