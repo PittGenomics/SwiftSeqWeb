@@ -7,33 +7,39 @@
             <h1>About SwiftSeq</h1>
         </div>
         <div class="row">
-            <p>
-                For decades, researchers and clinicians have envisioned genetic information playing an
-                inevitable — and significant — role in medical practices. Decreasing sequencing costs
-                and continuous technological improvements now allow us rapidly characterize individuals’
-                genetic variation, facilitating massive genomic studies and bringing precision medicine
-                closer to actualization. However, the subsequent influx of data increases the cost and
-                complexity of downstream analyses. Substantial hardware resources (CPU, memory, disk space, etc.)
-                are necessary but not sufficient to leverage these data streams. Sophisticated software
-                solutions are required to harness the scientific and clinical opportunities enabled by
-                contemporary sequencing technologies — particularly at scale. To this end, we have developed
-                SwiftSeq, a flexible, portable, and intuitive workflow infrastructure for the analysis of exomes,
-                genomes, or custom capture panels. By design, this approach allows even those with limited
-                programmatic experience to conduct small- and large-scale genomic analyses.
-            </p>
-            Swiftseq:
-            <ol>
-                <li>Is powered by the parallel scripting language <a href="http://swift-lang.org/main/" class="box-effect">Swift</a>.</li>
-                <li>Uses scatter-gather parallelism to reduce analysis run time by up to 8x.</li>
-                <li>Efficiently utilizes compute resources by packing tasks on workers.</li>
-                <li>Has a proven track record of scalability.</li>
-                <li>Workflow execution is fault tolerant and can be halted/restarted.</li>
-                <li>Natively supports germline and tumor-normal pair variant calling.</li>
-                <li>Allows users to specify algorithms and parameters via a graphical interface.</li>
-                <li>Can run on laptops/desktops, clusters, high-performance computing architectures,
-                    and cloud resources — both commercial and private.</li>
-                <li>Is <a href="https://github.com/PittGenomics/SwiftSeq" class="box-effect">open source</a>.</li>
-            </ol>
+            <div class="col-sm-6">
+                <img src="{% static 'images/swiftseq_diagram.png' %}" style="width:100%"/>
+            </div>
+            <div class="col-sm-6">
+                <p>
+                    For decades, researchers and clinicians have envisioned genetic information playing an
+                    inevitable — and significant — role in medical practices. Decreasing sequencing costs
+                    and continuous technological improvements now allow us rapidly characterize individuals’
+                    genetic variation, facilitating massive genomic studies and bringing precision medicine
+                    closer to actualization. However, the subsequent influx of data increases the cost and
+                    complexity of downstream analyses. Substantial hardware resources (CPU, memory, disk space, etc.)
+                    are necessary but not sufficient to leverage these data streams. Sophisticated software
+                    solutions are required to harness the scientific and clinical opportunities enabled by
+                    contemporary sequencing technologies — particularly at scale. To this end, we have developed
+                    SwiftSeq, a flexible, portable, and intuitive workflow infrastructure for the analysis of exomes,
+                    genomes, or custom capture panels. By design, this approach allows even those with limited
+                    programmatic experience to conduct small- and large-scale genomic analyses.
+                </p>
+                Swiftseq:
+                <ol>
+                    <li>Is powered by the parallel scripting language <a href="http://swift-lang.org/main/" class="box-effect">Swift</a>.</li>
+                    <li>Uses scatter-gather parallelism to reduce analysis run time by up to 8x.</li>
+                    <li>Efficiently utilizes compute resources by packing tasks on workers.</li>
+                    <li>Has a proven track record of scalability.</li>
+                    <li>Workflow execution is fault tolerant and can be halted/restarted.</li>
+                    <li>Natively supports germline and tumor-normal pair variant calling.</li>
+                    <li>Allows users to specify algorithms and parameters via a graphical interface.</li>
+                    <li>Can run on laptops/desktops, clusters, high-performance computing architectures,
+                        and cloud resources — both commercial and private.</li>
+                    <li>Is <a href="https://github.com/PittGenomics/SwiftSeq" class="box-effect">open source</a>.</li>
+                </ol>
+            </div>
+
         </div>
     </div>
 </section>
