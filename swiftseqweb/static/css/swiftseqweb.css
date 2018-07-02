@@ -1,3 +1,7 @@
+body {
+    background-color: #FCFCFC;
+}
+
 h1,h2,h3,h4,h5,h6{
     font-family: 'Open Sans', sans-serif;
 }
@@ -69,26 +73,9 @@ h1,h2,h3,h4,h5,h6{
     display: block;
 }
 
-/* Temporary */
 .swiftseq-no-rounded{
     border-radius: 0;
 }
-
-/* Stickem rules */
-/*.stickem-container {*/
-  /*position: relative;*/
-/*}*/
-
-/*.stickem {*/
-    /*position: fixed;*/
-    /*top: 0;*/
-/*}*/
-
-/*.stickem-end {*/
-    /*bottom: 40px;*/
-    /*position: absolute;*/
-    /*right: 0;*/
-/*}*/
 
 .stick{
     position: fixed;
@@ -236,4 +223,26 @@ a.box-effect::after {
 a.box-effect:hover::after {
     top: 0;
     height: 100%;
+}
+
+#brickwall {
+    background: url('/static/images/wall.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position-y: -250px;
+    height: 600px;
+    padding: 0;
+    position: relative;
+}
+#brickwall svg:nth-child(2) {
+    position: absolute;
+    bottom: 0;
+}
+
+.swiftseq-section-separator {
+    display: block;
+}
+
+.swiftseq-section-separator path {
+    fill: rgba(0, 52, 89, 1);
 }
