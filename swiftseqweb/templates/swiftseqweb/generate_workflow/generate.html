@@ -64,6 +64,7 @@
                         <input type="checkbox" checked="checked" {% if step.required %}disabled="disabled" {% endif %}
                                data-stepid="{{ step.id }}" name="option-checkbox-{{ step.id }}"
                                class="option-checkbox"/>{{ step.name }}
+                        {% if step.required %}<input type="hidden" name="option-checkbox-{{ step.id }}" />{% endif %}
                     </li>
                 </label>
                 {% endfor %}
